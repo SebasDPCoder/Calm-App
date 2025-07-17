@@ -19,15 +19,16 @@ export const auth = {
     if (existingUser.length > 0) {
       throw new Error('El email ya está registrado');
     }
-    const newUser = { name, email, password: password, role:"visitor" };
+    const newUser = {name, email, password: password};
     await api.post('/users', newUser);
+    localStorage.setItem('user', JSON.stringify(user)); // Guarda el usuario en localStorage
   },
 
   // Implementa la función de logout
   logout: () => {
     //Elimina el usuario de localStorage y redirige a login
     localStorage.removeItem('user'); 
-    location.pathname = '/login';
+    location.pathname = '/';
   },
 
   // Devuelve true si hay usuario autenticado

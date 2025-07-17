@@ -1,5 +1,5 @@
 export const api = {
-  base: 'http://localhost:5173/users',  
+  base: 'http://localhost:3000',  
   
   // TODO: Realiza una petición GET a la API y devuelve los datos
   get: async (param) => {

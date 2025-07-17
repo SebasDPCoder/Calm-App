@@ -31,7 +31,7 @@ export function loadRoute() {
     if (logoutButton) { 
         logoutButton.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.pathname = '/';  // Redirige al login
+            auth.logout();  // Redirige al login
         });
     }
 
@@ -53,7 +53,7 @@ export function loadRoute() {
     } else {
         // Mostrar sidebar en otras rutas válidas
         if (sidebar) {
-            sidebar.style.display = 'block';
+        sidebar.style.display = 'flex';
         }
     }
 
@@ -63,13 +63,16 @@ export function loadRoute() {
         return;
     }
 
+    if (!auth.isAuthenticated() && path !== "/"){
+        window.location.pathname = '/';
+        return;
+    }    
+
     if (path === '/login' && auth.isAuthenticated()) {
         // Redirigir al home si ya está autenticado
         window.location.pathname = '/home';
         return;
     }
-
-    
 
     document.getElementById('main-content').innerHTML = view();
 }

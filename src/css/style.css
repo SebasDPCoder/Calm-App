@@ -1,3 +1,11 @@
+:root{
+  --pink: #F6E5F5;
+  --beige: #F6E7E6;
+  --blue: #B9CCED;
+  --dark-blue: #8cade6;
+  --ligth-pink: #f8e8f4;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -11,6 +19,8 @@ body {
 
 
 .app {
+  background: unset;
+  background-color: var(--beige);
   display: grid;
   grid-area: 1 / 2 / 2 / 3;
   padding-top: 1.5em ;
@@ -21,7 +31,7 @@ body {
 .sidebar {
   grid-area: 1 / 1 / 2 / 2;
   width: 7em;
-  background-color: #eee;
+  background-color: var(--beige);
   padding-top: 3em;
   display: flex;
   flex-direction: column;
@@ -30,7 +40,7 @@ body {
 
 
 .sidebar button {
-  background-color: #919191;
+  background-color: var(--blue);
   width: 70%;
   padding: .5em;
   border: none;
@@ -47,7 +57,7 @@ h2 {
 
 main {
   flex: 1;
-  background-color: #919191;
+  background-color: #ffffff;
   width: 97%;
   padding: 1.5em;
   border-radius: 30px;

@@ -100,7 +100,6 @@ export function showLogin() {
 };
 
 
-
 export function showHome() {
   const app = document.getElementById('app').innerHTML = `
     <link rel="stylesheet" href="./src/css/style-home.css">
@@ -159,10 +158,10 @@ export function showHome() {
     </div>
 `;
 
-const logoutButton = document.getElementById('logout').addEventListener('click', (e) => {
-  e.preventDefault();
-  auth.logout();  // Redirige al login
-});
+  const logoutButton = document.getElementById('logout').addEventListener('click', (e) => {
+    e.preventDefault();
+    auth.logout();  // Redirige al login
+  });
   const music = document.getElementById("musicaFondo");
   music.volume = 0.2;
 
@@ -198,8 +197,9 @@ const logoutButton = document.getElementById('logout').addEventListener('click',
   })
 };
 
-export function showNoticias() {
+export function showInformacion() {
   return `
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <section>
       <i class="fa-solid fa-circle-left"></i>
       <h2>Noticias</h2>

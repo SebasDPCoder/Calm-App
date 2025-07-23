@@ -1,16 +1,52 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "John Doe",
-            "email": "john@mail.com",
-            "password": "123abc"
-        },
-        {
-            "id": 2,
-            "name": "Jane Smith",
-            "email": "jane@mail.com",
-            "password": "456def"
-        }
-    ]
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@mail.com",
+      "password": "123abc"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "jane@mail.com",
+      "password": "456def"
+    },
+    {
+      "id": "d68f",
+      "name": "Pedro",
+      "email": "pedro@gmail.com",
+      "password": "hola1123"
+    },
+    {
+      "id": "42bc",
+      "name": "Dorian",
+      "email": "dorian@mail.com",
+      "password": "12345"
+    },
+    {
+      "id": "947d",
+      "name": "juan",
+      "email": "juan@mail.com",
+      "password": "jaunabc"
+    },
+    {
+      "id": "02a8",
+      "name": "dfdff",
+      "email": "dfgfd@mail.com",
+      "password": "jkjkjk"
+    },
+    {
+      "id": "a99b",
+      "name": "Juancho",
+      "email": "juancho@mail.com",
+      "password": "pd123"
+    },
+    {
+      "id": "9c0e",
+      "name": "Boni",
+      "email": "boni@mail.com",
+      "password": "234567"
+    }
+  ]
 }

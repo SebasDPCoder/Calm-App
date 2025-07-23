@@ -1,11 +1,12 @@
-
-
-:root{
+:root {
     --pink: #F6E5F5;
     --beige: #F6E7E6;
-    --blue: #B9CCED;
-    --dark-blue: #8cade6;
     --ligth-pink: #f8e8f4;
+    --main-purple: #6C4AB6;
+    --light-purple: #F7F2FB;
+    --text-muted: #5A5A89;
+    --footer-bg: #b58de6;
+    --footer-text: #A89FBF;
 }
 
 .app {
@@ -16,14 +17,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--beige);
+    background-color: var(--light-purple);
     color: #ffffff;
 }
 
 .container-form {
     display: flex;
     justify-content: space-around;
-    transition:  all .5s ease-out;
+    transition: all .5s;
 }
 
 .welcome-back {
@@ -34,10 +35,11 @@ body {
 
 .message {
     padding: 1rem;
-    color: var(--blue);
+    color: var(--main-purple);
 }
 
-.register-text, .login-text{
+.register-text,
+.login-text {
     font-size: 2.7rem;
     padding: 2rem 1rem;
     border-radius: 20px;
@@ -45,29 +47,30 @@ body {
     margin: 20px auto;
     position: relative;
     background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.register-text{
+.register-text {
     font-size: 1.7rem;
 }
 
-.register-text p{
+.register-text p {
     font-size: 1.2rem;
 }
 
-.register-text::after, .login-text::after{
-    content:'';
+.register-text::after,
+.login-text::after {
+    content: '';
     position: absolute;
     bottom: -20px;
-    left:50%;
+    left: 50%;
     transform: translateX(-50%);
     border-width: 30px 30px 0 30px;
     border-style: solid;
     border-color: white transparent transparent transparent;
 }
 
-input#register-name{
+input#register-name {
     margin-top: 4rem;
 }
 
@@ -78,7 +81,7 @@ input#email {
 
 .message button {
     padding: 1rem;
-    background-color: var(--blue);
+    background-color: var(--main-purple);
     border-radius: 2rem;
     border: none;
     outline: none;
@@ -95,7 +98,7 @@ input#email {
     transform: scale(1.1);
 }
 
-.sign-button{
+.sign-button {
     padding: 1rem;
     background-color: var();
     font-weight: bold;
@@ -108,14 +111,14 @@ input#email {
     width: 35em;
     padding: 1rem;
     margin: 2rem;
-    background: linear-gradient(90deg, var(--blue), var(--dark-blue));
+    background: linear-gradient(90deg, var(--footer-bg), var(--main-purple));
     text-align: center;
     border-radius: 30px;
     height: 38rem;
 
 }
 
-.formulario input::placeholder{
+.formulario input::placeholder {
     color: #8f8989;
 }
 
@@ -152,9 +155,6 @@ input#email {
     cursor: pointer;
 }
 
-.cuenta-gratis {
-    padding: 2rem 0;
-}
 
 .formulario input {
     width: 70%;

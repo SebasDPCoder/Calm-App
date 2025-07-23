@@ -21,7 +21,7 @@ export const auth = {
     }
     const newUser = {name, email, password: password};
     await api.post('/users', newUser);
-    localStorage.setItem('user', JSON.stringify(user)); // Guarda el usuario en localStorage
+    localStorage.setItem('user', JSON.stringify(newUser)); // Guarda el usuario en localStorage
   },
 
   // Implementa la función de logout

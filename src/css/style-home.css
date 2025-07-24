@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 :root {
     --main-purple: #6C4AB6;
     --light-purple: #F7F2FB;
@@ -87,16 +90,18 @@ body {
 }
 
 #logout {
-    background-color: var(--main-purple);
-    color: white;
+    background-color: transparent;
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
-    width: 10rem;
+    width: 5rem;
     margin: 20px auto;
     transition: background-color 0.3s ease;
+    position: absolute;
+    right: 60px;
+    top: 0;
 }
 
 
@@ -104,10 +109,13 @@ body {
 footer {
     text-align: center;
     padding: 20px;
+    width: 100%;
     color: var(--footer-text);
     font-size: 0.8rem;
     background-color: var(--footer-bg);
     margin-top: auto;
+    position: absolute;
+    bottom: 0;
 }
 
 a {
@@ -130,7 +138,7 @@ a:hover {
 }
 
 #alma-icon {
-    width: 60px;
+    width: 95px;
     cursor: pointer;
     animation: float 3s ease-in-out infinite;
 }

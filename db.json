@@ -47,6 +47,12 @@
       "name": "Boni",
       "email": "boni@mail.com",
       "password": "234567"
+    },
+    {
+      "id": "0fd5",
+      "name": "nelson",
+      "email": "nelson@mail.com",
+      "password": "nel123"
     }
   ]
 }

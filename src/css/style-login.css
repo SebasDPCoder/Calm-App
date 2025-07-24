@@ -24,7 +24,7 @@ body {
 .container-form {
     display: flex;
     justify-content: space-around;
-    transition: all .5s;
+    
 }
 
 .welcome-back {
@@ -135,6 +135,9 @@ input#email {
     margin: auto;
 }
 
+.sign-up{
+    transition: all .3s;
+}
 
 
 .border-icon {

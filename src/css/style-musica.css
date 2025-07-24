@@ -1,0 +1,122 @@
+:root {
+  --main-purple: #6C4AB6;
+  --light-purple: #F7F2FB;
+  --card-shadow: rgba(118, 54, 255, 0.164);
+  --text-muted: #5A5A89;
+  --footer-bg: #F4EFFA;
+  --footer-text: #A89FBF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-purple);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+header {
+  background: var(--main-purple);
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 20px var(--card-shadow);
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.home {
+  color: var(--button-bg);
+  font-size: 25px;
+}
+
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.main-content {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px var(--card-shadow);
+  max-width: 80%;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.controls button {
+  background-color: var(--footer-bg);
+  color: var(--main-purple);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px var(--card-shadow);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.controls button:hover {
+  background-color: #e6dbfa;
+  transform: translateY(-2px);
+}
+
+.embed-container iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 4px 16px var(--card-shadow);
+  margin-top: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: var(--footer-text);
+  background-color: var(--footer-bg);
+  border-top: 1px solid #e0d9f0;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .main-content {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .embed-container iframe {
+    height: 300px;
+  }
+}

@@ -195,6 +195,7 @@ export function showHome() {
   almaResponses.forEach(response => {
     response.addEventListener('click', almaResponder);
   })
+  
 };
 
 export function showInformacion() {
@@ -623,7 +624,9 @@ export function showCita() {
         © 2025 CalmApp. Todos los derechos reservados.
         </div>
     </footer>
+    
   `;
+  
   const form = document.getElementById('form');
   const btn = document.getElementById('button');
 

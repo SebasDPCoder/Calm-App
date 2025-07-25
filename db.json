@@ -53,6 +53,12 @@
       "name": "nelson",
       "email": "nelson@mail.com",
       "password": "nel123"
+    },
+    {
+      "id": "08f6",
+      "name": "Sergio",
+      "email": "bsergio274@gmail.com",
+      "password": "bon234"
     }
   ]
 }

@@ -5,6 +5,11 @@
   --text-muted: #5A5A89;
   --footer-bg: #F4EFFA;
   --footer-text: #A89FBF;
+
+  --primary: var(--main-purple);
+  --secondary: #A5A6F6;
+  --light: var(--light-purple);
+  --buttons: #92c5f8;
 }
 
 * {
@@ -33,7 +38,7 @@ a {
 }
 
 .header {
-  background-color: var(--main-purple);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
   padding: 3rem 1rem;
   border-bottom-left-radius: 40px;

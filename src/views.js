@@ -94,7 +94,7 @@ export function showLogin() {
       await auth.register(name, email, password);
       loadRoute();
     } catch (err) {
-      console.log('El usuario ya está registrado o hubo un error: ' + err.message);
+      alert('El usuario ya está registrado o hubo un error: ' + err.message);
     };
   };
 };
@@ -107,7 +107,7 @@ export function showHome() {
       <p>Encuentra calma, equilibrio y bienestar emocional.</p>
       <div id="logout-container">
         <button class="logout-button" id="logout">
-          <img src="./src/img/right-from-bracket-solid-full.svg"></img>
+          <i class="fa-solid fa-right-from-bracket"></i>
         </button>  
       </div>
     </div>
@@ -145,7 +145,7 @@ export function showHome() {
 
       <a href="/desafios">
         <div class="card">
-        <div class="card-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div class="card-icon"><i class="fa-solid fa-medal"></i></div>
         <h3>Desafios</h3>
         <p>Participa en desafíos para mejorar tu bienestar emocional.</p>
         </div>
@@ -154,7 +154,7 @@ export function showHome() {
       <a href="/foro">
         <div class="card">
         <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
-        <h3>Foro</h3>
+        <h3>Comunidad</h3>
         <p>Comparte tus experiencias y aprende de la comunidad.</p>
         </div>
       </a>
@@ -164,9 +164,11 @@ export function showHome() {
     <div class="alma-bot">
       <img src="./src/img/tortuga.png" alt="Alma la tortuga" class="alma-float" id="alma-icon">
     <div class="chat-box" id="alma-chat">
-    <p><strong>Alma:</strong> ¡Hola! ¿Cómo te sientes hoy?</p>
-    <button class="almaresponse" >😊 Bien</button>
-    <button class="almaresponse" >😔 No muy bien</button>
+      <div id="alma-mensajes">
+        <p><strong>Alma:</strong> ¡Hola! ¿Cómo te sientes hoy?</p>
+        <button onclick="almaResponder('bien')">😊 Bien</button>
+        <button onclick="almaResponder('mal')">😔 No muy bien</button>
+      </div>
     </div>
     </div>
     <footer>
@@ -195,23 +197,98 @@ export function showHome() {
 
   document.addEventListener('click', iniciarMusica);
   window.addEventListener('scroll', iniciarMusica);
+  
   const almaIcon = document.getElementById('alma-icon');
   const almaChat = document.getElementById('alma-chat');
+  const almaMensajes = document.getElementById('alma-mensajes');
 
   almaIcon.addEventListener('click', () => {
     almaChat.style.display = almaChat.style.display === 'block' ? 'none' : 'block';
   });
 
+  function almaResponder(respuesta) {
+    switch (respuesta) {
+      case 'bien':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> ¡Me alegra muchísimo saber eso! 🌞 ¿Te gustaría hacer algo para seguir con esa energía?</p>
+          <button onclick="almaResponder('meditacion')">🧘 Meditación guiada</button>
+          <button onclick="almaResponder('volver')">🔁 Volver al inicio</button>
+        `;
+        break;
 
-  function almaResponder() {
-    almaChat.innerHTML = `<p><strong>Alma:</strong> Recuerda que tu bienestar es lo más importante 🧘‍♂️✨</p>`;
-  }
+      case 'mal':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> Siento que no estés bien 😔. Estoy aquí para ti. ¿Qué te gustaría hacer?</p>
+          <button onclick="almaResponder('respiracion')">🌬️ Respirar profundamente</button>
+          <button onclick="almaResponder('frase')">💬 Leer una frase de ánimo</button>
+          <button onclick="almaResponder('cita')">📅 Agendar una cita</button>
+          <button onclick="almaResponder('volver')">🔁 Volver al inicio</button>
+        `;
+        break;
 
-  const almaResponses = document.querySelectorAll('.almaresponse');
-  almaResponses.forEach(response => {
-    response.addEventListener('click', almaResponder);
-  })
-  
+      case 'musica':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> Aquí tienes una melodía relajante para seguir vibrando alto 🎶</p>
+          <a href="https://www.youtube.com/watch?v=2OEL4P1Rz04" target="_blank">▶️ Música relajante</a>
+          <button onclick="almaResponder('volver')">🔁 Volver al inicio</button>
+        `;
+        break;
+
+      case 'meditacion':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> Esta meditación te ayudará a centrarte y calmar tu mente 🧘♀️</p>
+          <a href="https://www.youtube.com/watch?v=inpok4MKVLM" target="_blank">▶️ Meditación guiada</a>
+          <button onclick="almaResponder('volver')">🔁 Volver al inicio</button>
+        `;
+        break;
+
+      case 'respiracion':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> Vamos a hacer un ejercicio de respiración. Inhala 4 segundos, mantén 4, exhala 4. Repite 3 veces 🌬️</p>
+          <a href="https://www.youtube.com/watch?v=aNXKjGFUlMs" target="_blank">▶️ Ver ejercicio</a>
+          <button onclick="almaResponder('volver')">🔁 Volver al inicio</button>
+        `;
+        break;
+
+      case 'frase':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> “No tienes que controlar tus pensamientos. Solo deja de permitirles que te controlen.” — Dan Millman 💜</p>
+          <button onclick="almaResponder('otra_frase')">📖 Otra frase</button>
+          <button onclick="almaResponder('volver')">🔁 Volver al inicio</button>
+        `;
+        break;
+
+      case 'otra_frase':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> “Está bien no estar bien. Lo importante es seguir adelante, poco a poco.” 💫</p>
+          <button onclick="almaResponder('volver')">🔁 Volver al inicio</button>
+        `;
+        break;
+
+      case 'cita':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> Me alegra que quieras buscar apoyo. Puedes agendar tu cita con uno de nuestros profesionales aquí:</p>
+          <a href="citas.html">📅 Agendar cita</a>
+          <button onclick="almaResponder('volver')">🔁 Volver al inicio</button>
+        `;
+        break;
+
+      case 'volver':
+        almaMensajes.innerHTML = `
+          <p><strong>Alma:</strong> ¿Cómo te sientes hoy?</p>
+          <button onclick="almaResponder('bien')">😊 Bien</button>
+          <button onclick="almaResponder('mal')">😔 No muy bien</button>
+        `;
+        break;
+
+      default:
+        almaMensajes.innerHTML = `<p><strong>Alma:</strong> Lo siento, no entendí eso 😅. Volvamos al inicio.</p>`;
+        setTimeout(() => almaResponder('volver'), 2000);
+        break;
+    };
+  };
+  window.almaResponder = almaResponder;
+
 };
 
 export function showInformacion() {
@@ -351,7 +428,7 @@ export function showEmotions() {
 
         <dialog id="dialog-emotion" class="emotion-dialog">
           <form method="dialog">
-            <p id="dialog-title">Cuéntame más</p>z
+            <p id="dialog-title">Cuéntame más</p>
             <textarea id="response" rows="3" ></textarea>
             <menu>
               <p>¿Quieres agendar cita con alguno de nuestros expertos o prefieres desahogarte escribiendo cómo te sientes?</p>
@@ -590,6 +667,7 @@ export function showForo() {
   const app = document.getElementById('app').innerHTML = `
   <link rel="stylesheet" href="./src/css/style-foro.css">
   <header>
+  
     <div class="header-left">
       <a href="/home" class="home-link"><i class="fas fa-house"></i></a>
       <span class="header-title">Comunidad</span>
@@ -645,21 +723,31 @@ export function showForo() {
       <button onclick="createPost()">Publicar</button>
     </div>
   </div>
+  
   `;
+
+  window.togglePostBox = togglePostBox;
+  window.closeModal = closeModal;
+  window.selectChannel = selectChannel;
+  window.likePost = likePost;
+  window.toggleComments = toggleComments;
+  window.addComment = addComment;
+  window.createPost = createPost;
+
   const postsData = {
-  Ansiedad: [],
-  Mindfulness: [],
+    Ansiedad: [],
+    Mindfulness: [],
   Autoestima: [],
   Jóvenes: [],
   Superación: []
 };
 
-let currentChannel = 'Ansiedad';
-
-function selectChannel(channel, button) {
-  currentChannel = channel;
-  renderPosts();
-
+  let currentChannel = 'Ansiedad';
+  
+  function selectChannel(channel, button) {
+    currentChannel = channel;
+    renderPosts();
+    
   document.querySelectorAll('.channel-buttons button').forEach(btn =>
     btn.classList.remove('active')
   );
@@ -669,14 +757,14 @@ function selectChannel(channel, button) {
 function renderPosts() {
   const container = document.getElementById('posts-container');
   container.innerHTML = '';
-
+  
   const posts = postsData[currentChannel];
-
+  
   if (!posts.length) {
     container.innerHTML = `<p style="text-align:center;color:gray;">No hay publicaciones en #${currentChannel}</p>`;
     return;
   }
-
+  
   posts.forEach((post, idx) => {
     const el = document.createElement('div');
     el.className = 'post';
@@ -684,91 +772,91 @@ function renderPosts() {
       <strong>Anónimo</strong><br/>
       <p>${sanitize(post.content)}</p>
       <div class="post-actions">
-        <button onclick="likePost(${idx})">
+      <button onclick="likePost(${idx})">
           <i class="fas fa-heart"></i> ${post.likes}
         </button>
         <button onclick="toggleComments(${idx})">
-          <i class="fas fa-comment"></i> ${post.comments.length}
+        <i class="fas fa-comment"></i> ${post.comments.length}
         </button>
       </div>
       <div class="comments" id="comments-${idx}" style="display:none;">
         ${post.comments.map(c => `<div class="comment">${sanitize(c)}</div>`).join('')}
         <input type="text" id="comment-input-${idx}" placeholder="Escribe un comentario..."/>
         <button onclick="addComment(${idx})">
-          <i class="fas fa-paper-plane"></i> Enviar
+        <i class="fas fa-paper-plane"></i> Enviar
         </button>
-      </div>
+        </div>
     `;
     container.appendChild(el);
   });
 }
 
-function createPost() {
-  const content = document.getElementById('post-content').value.trim();
-  const channel = document.getElementById('channel-select').value;
+  function createPost() {
+    const content = document.getElementById('post-content').value.trim();
+    const channel = document.getElementById('channel-select').value;
 
-  if (!content || !channel) {
-    alert('Completa el contenido y selecciona un canal');
-    return;
+    if (!content || !channel) {
+      alert('Completa el contenido y selecciona un canal');
+      return;
+    }
+
+    postsData[channel].unshift({
+      content,
+      likes: 0,
+      comments: []
+    });
+
+    document.getElementById('post-content').value = '';
+    document.getElementById('channel-select').value = '';
+    togglePostBox();
+
+    if (channel === currentChannel) {
+      renderPosts();
+    }
   }
 
-  postsData[channel].unshift({
-    content,
-    likes: 0,
-    comments: []
-  });
-
-  document.getElementById('post-content').value = '';
-  document.getElementById('channel-select').value = '';
-  togglePostBox();
-
-  if (channel === currentChannel) {
+  function likePost(idx) {
+    postsData[currentChannel][idx].likes++;
     renderPosts();
   }
-}
 
-function likePost(idx) {
-  postsData[currentChannel][idx].likes++;
-  renderPosts();
-}
-
-function toggleComments(idx) {
-  const comments = document.getElementById(`comments-${idx}`);
-  if (comments) {
-    comments.style.display = comments.style.display === 'none' ? 'block' : 'none';
+  function toggleComments(idx) {
+    const comments = document.getElementById(`comments-${idx}`);
+    if (comments) {
+      comments.style.display = comments.style.display === 'none' ? 'block' : 'none';
+    }
   }
-}
 
-function addComment(idx) {
-  const input = document.getElementById(`comment-input-${idx}`);
-  const text = input.value.trim();
-  if (!text) return;
+  function addComment(idx) {
+    const input = document.getElementById(`comment-input-${idx}`);
+    const text = input.value.trim();
+    if (!text) return;
 
-  postsData[currentChannel][idx].comments.push(text);
-  input.value = '';
-  renderPosts();
-  toggleComments(idx); 
-}
-
-function togglePostBox() {
-  const modal = document.getElementById('post-modal');
-  modal.classList.toggle('hidden');
-}
-
-function closeModal(e) {
-  const modal = document.getElementById('post-modal');
-  if (e.target === modal) {
-    modal.classList.add('hidden');
+    postsData[currentChannel][idx].comments.push(text);
+    input.value = '';
+    renderPosts();
+    toggleComments(idx); 
   }
-}
 
-function sanitize(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+  function togglePostBox() {
+    const modal = document.getElementById('post-modal');
+    modal.classList.toggle('hidden');
+  }
+
+  function closeModal(e) {
+    const modal = document.getElementById('post-modal');
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  }
+
+  function sanitize(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
 }
 }
 
@@ -776,15 +864,15 @@ export function showDesafios() {
   const app = document.getElementById('app').innerHTML = `
   <link rel="stylesheet" href="./src/css/style-desafios.css">
   <header>
-    <div class="header-left">
-      <a href="/home" class="home-link"><i class="fas fa-house"></i></a>
-      <span class="header-title">Desafíos de bienestar</span>
-    </div>
+    <h1>CalmApp</h1>
+    <p>Tu espacio seguro para cuidar tu salud mental</p>
   </header>
 
+  
   <main>
     <section class="challenges-section">
       <h2>Desafío semanal</h2>
+      <a href="/home" class="home-link"><i class="fas fa-house"></i></a>
 
       <div id="challenges-list" class="challenges-list"></div>
 

@@ -6,41 +6,53 @@
   --bg: #fff;
   --gray-border: #ddd;
   --green: #4caf50;
+
+  --primary: var(--main-purple);
+  --secondary: #A5A6F6;
+  --light: var(--light-purple);
+  --buttons: #92c5f8;
 }
 
+header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   background: var(--light-purple);
   color: #333;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  padding: 1rem 1.2rem;
-  background: var(--bg);
-  border-bottom: 1px solid var(--gray-border);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .home-link {
-  color: var(--main-purple);
   font-size: 1.4rem;
   text-decoration: none;
+  position: relative;
+  top: -55px;
+  left: 33rem;
 }
 
 .header-title {
   font-size: 1.4rem;
-  color: var(--main-purple);
+  color: var(--bg);
   font-weight: 700;
   text-align: center;
 }
@@ -48,7 +60,10 @@ header {
 main {
   max-width: 600px;
   margin: 1.5rem auto;
-  padding: 0 1rem;
+  background-color: var(--bg);
+  padding: 1rem;
+  border-radius: 30px;
+  box-shadow: 0 0 15px var(--card-shadow);
 }
 
 .challenges-list {
@@ -57,6 +72,7 @@ main {
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
+
 
 .challenge-card {
   background: var(--bg);

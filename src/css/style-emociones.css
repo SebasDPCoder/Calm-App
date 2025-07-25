@@ -1,312 +1,345 @@
 :root {
-    --main-purple: #6C4AB6;
-    --light-purple: #F7F2FB;
-    --card-shadow: rgba(118, 54, 255, 0.164);
-    --text-muted: #5A5A89;
-    --footer-bg: #F4EFFA;
-    --footer-text: #A89FBF;
-  
-    --primary: var(--main-purple);
-    --secondary: #A5A6F6; 
+  --main-purple: #6C4AB6;
+  --light-purple: #F7F2FB;
+  --card-shadow: rgba(118, 54, 255, 0.164);
+  --text-muted: #5A5A89;
+  --footer-bg: #F4EFFA;
+  --footer-text: #A89FBF;
+
+  --primary: var(--main-purple);
+  --secondary: #A5A6F6;
   --light: var(--light-purple);
-    --buttons: #92c5f8; }
-  
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      color: var(--dark);
-      background-color: #f5f7ff;
-    }
-  
-    
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      text-align: center;
-      padding: 3rem 1rem;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
-    
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-    }
-  
-   
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      color: var(--dark);
-      opacity: 0.8;
-      font-size: 0.9rem;
-    }
-    
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      button {
-        width: 100%;
-        max-width: 300px;
-      }
-    }
-  
-    h2 {
-      margin-bottom: 1rem;
-      color: #333;
-    }
-  
-    
-    .emotions-container {
-      display: flex;
-      gap: 10rem;
-    }
-    
-    .emotion-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center; 
-    }
-    
-    .emotion-item span {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #333;
-    }
-    
-    
-    .emotion-btn {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-  
-    #emotion-select {
-    font-family: 'Arial', sans-serif;  
-    font-size: 16px;                   
-    color: #333;                      
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background-color: #fff;
+  --buttons: #92c5f8;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: #f5f7ff;
+}
+
+
+header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--dark);
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
   }
-  
-  #emotion-select option {
-    font-family: 'Arial', sans-serif;
-    font-size: 15px;
-    color: #444;
-    padding: 4px;
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
   }
-    
-    .emotion-btn.infeliz   { background: #C6B3FF; }
-    .emotion-btn.descontento { background: #FFB3A3; }
-    .emotion-btn.neutral   { background: #FFD69E; }
-    .emotion-btn.bien      { background: #FFF2AE; }
-    .emotion-btn.genial    { background: #C8F7C5; }
-    
-    .emotion-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    
-    .emotion-btn:active {
-      transform: scale(0.95);
-    }
-  
-    emotion-dialog::backdrop {
-      background: rgba(0,0,0,0.4);
-    }
-    
-  
-    .emotion-dialog {
-      border: none;
-      border-radius: 8px;
-      padding: 1rem;
-      max-width: 350px;
-      width: 80%;
-      z-index: 20;
-      margin: auto;
-    }
-    
-    .emotion-dialog h3 {
-      margin-top: 0;
-    }
-    
-    .emotion-dialog textarea {
-      width: 100%;
-      margin: 0.5rem 0;
-    }
-    
-    button, .popover-actions button {
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 500;
-    }
-    
-    /* Estilo específico para Botón Enviar */
-    #btn-ok {
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-      font-size: 1.05rem;
-      color: #fff;
-      background: var(--buttons);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-    }
-    
-    /* Estilo específico para Botón Cancelar */
-    #btn-cancel {
-      font-family: 'Arial', sans-serif;
-      font-weight: normal;
-      font-size: 0.95rem;
-      color: var(--buttons);
-      background: transparent;
-      border: 2px solid #ccc;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-    }
-  
-  #note-text {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
+
   button {
-    background-color: var(--buttons);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: var(--buttons);
-  }
-  
-  
-  #notes-section {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  #emotion-select {
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  #note-text {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    height: 100px;
-    resize: none;
+    max-width: 300px;
   }
-  
-  button {
-    background-color: var(--buttons);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: var(--secondary);
-  }
-  
-  .note-item {
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    border-left: 6px solid transparent;
-    background-color: #f9f9f9;
-    margin-top: 1rem;
-    
-  }
-  
-  /* Emociones */
-  .infeliz {
-    background-color: #C6B3FF;
-    border-left-color: #b39cfa;
-  }
-  
-  .descontento {
-    background-color:#FFB3A3;
-    border-left-color: #f8a391;
-  }
-  
-  .neutral {
-    background-color: #FFD69E;
-    border-left-color:  #ebc187;
-  }
-  
-  .bien {
-    background-color: #FFF2AE;
-    border-left-color: #f1e39a;
-  }
-  
-  .genial {
-    background-color: #C8F7C5;
-    border-left-color:  #a7dda3;
-  }
-  
-  /* Burbujita de color */
-  .emotion-bubble {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-right: 8px;
-    background-color: gray;
-    border-radius: 50%;
-  }
-  
-  .home{
-      color:#6C4AB6;
-      font-size: 25px;
-  }
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+
+.emotions-container {
+  display: flex;
+  gap: 10rem;
+}
+
+.emotion-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emotion-item span {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+
+.emotion-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#emotion-select {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #333;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+#emotion-select option {
+  font-family: 'Arial', sans-serif;
+  font-size: 15px;
+  color: #444;
+  padding: 4px;
+}
+
+.emotion-btn.infeliz {
+  background: #C6B3FF;
+}
+
+.emotion-btn.descontento {
+  background: #FFB3A3;
+}
+
+.emotion-btn.neutral {
+  background: #FFD69E;
+}
+
+.emotion-btn.bien {
+  background: #FFF2AE;
+}
+
+.emotion-btn.genial {
+  background: #C8F7C5;
+}
+
+.emotion-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.emotion-btn:active {
+  transform: scale(0.95);
+}
+
+emotion-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+
+.emotion-dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 350px;
+  width: 80%;
+  z-index: 20;
+  margin: auto;
+}
+
+.emotion-dialog h3 {
+  margin-top: 0;
+}
+
+.emotion-dialog textarea {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+button,
+.popover-actions button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Estilo específico para Botón Enviar */
+#btn-ok {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #fff;
+  background: var(--secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+/* Estilo específico para Botón Cancelar */
+#btn-cancel {
+  font-family: 'Arial', sans-serif;
+  font-weight: normal;
+  font-size: 0.95rem;
+  color: var(--secondary);
+  background: transparent;
+  border: 2px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+#note-text {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 100px;
+  resize: none;
+}
+
+menu p{
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: var(--buttons);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--buttons);
+}
+
+
+#notes-section {
+  padding: 20px;
+  background-color: #fff;;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#emotion-select {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#note-text {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 100px;
+  resize: none;
+}
+
+button {
+  background-color: var(--secondary);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--buttons);
+}
+
+.note-item {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border-left: 6px solid transparent;
+  background-color: #f9f9f9;
+  margin-top: 1rem;
+
+}
+
+/* Emociones */
+.infeliz {
+  background-color: #C6B3FF;
+  border-left-color: #b39cfa;
+}
+
+.descontento {
+  background-color: #FFB3A3;
+  border-left-color: #f8a391;
+}
+
+.neutral {
+  background-color: #FFD69E;
+  border-left-color: #ebc187;
+}
+
+.bien {
+  background-color: #FFF2AE;
+  border-left-color: #f1e39a;
+}
+
+.genial {
+  background-color: #C8F7C5;
+  border-left-color: #a7dda3;
+}
+
+/* Burbujita de color */
+.emotion-bubble {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  background-color: gray;
+  border-radius: 50%;
+}
+
+.home {
+  color: #6C4AB6;
+  font-size: 25px;
+  right: 300px;
+  position: absolute;
+}

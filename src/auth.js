@@ -6,6 +6,7 @@ export const auth = {
     // Lanza un error si las credenciales no son válidas
     const users = await api.get(`/users?email=${email}`);
     if (users.length === 0 || users[0].password !== password) {
+      alert('Credenciales inválidas');
       throw new Error('Credenciales inválidas');
     }
     const user = users[0];

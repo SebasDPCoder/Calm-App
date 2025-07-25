@@ -1,23 +1,25 @@
 import { auth } from './auth.js';
 import {
     showHome,
-    showAmigo,
     showCita,
-    showEmociones,
+    showEmotions,
     showInformacion,
     showMusica,
     showLogin,
+    showDesafios,
+    showForo,
     show404
 } from './views.js';
 
 const routes = {
     "/": showLogin,
     "/home": showHome,
-    "/amigo": showAmigo,
     "/citas": showCita,
-    "/emociones": showEmociones,
+    "/emociones": showEmotions,
     "/informacion": showInformacion,
     "/musica": showMusica,
+    "/desafios": showDesafios,
+    "/foro": showForo,
     "/404": show404
 };
 

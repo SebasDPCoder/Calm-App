@@ -114,7 +114,6 @@ footer {
     font-size: 0.8rem;
     background-color: var(--footer-bg);
     margin-top: auto;
-    position: absolute;
     bottom: 0;
 }
 

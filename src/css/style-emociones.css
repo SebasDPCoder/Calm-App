@@ -244,6 +244,7 @@
     border: 1px solid #ccc;
     font-size: 16px;
     height: 100px;
+    resize: none;
   }
   
   button {
@@ -266,6 +267,7 @@
     border-left: 6px solid transparent;
     background-color: #f9f9f9;
     margin-top: 1rem;
+    
   }
   
   /* Emociones */
@@ -307,5 +309,4 @@
   .home{
       color:#6C4AB6;
       font-size: 25px;
-      padding: 1120px;
   }

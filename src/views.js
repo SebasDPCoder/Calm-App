@@ -7,7 +7,7 @@ export function showLogin() {
   <div class="container-form sign-in">
         <div class="welcome-back">
             <div class="message">
-                <h2 class="login-text">Bienvenido a CalmApp</h2>
+                <h2  class="login-text" >Bienvenido de nuevo </h2>
                 <button class="sign-up-btn">Iniciar Sesion</button>
             </div>
         </div>
@@ -51,7 +51,7 @@ export function showLogin() {
         <div class="welcome-back">
             <div class="message">
                 <div class="register-text">
-                    <h2>Bienvenido de nuevo</h2>
+                    <h2>Bienvenido a CalmApp</h2>
                     <p>Si aun no tienes una cuenta por favor registrese aqui</p>
                 </div>
                 <button class="sign-in-btn">Registrarse</button>
@@ -140,6 +140,22 @@ export function showHome() {
         <div class="card-icon"><i class="fa-solid fa-headphones"></i></div>
         <h3>Musica</h3>
         <p>Encuentra musica para relajarte y liberar tensiones.</p>
+        </div>
+      </a>
+
+      <a href="/desafios">
+        <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-envelope"></i></div>
+        <h3>Desafios</h3>
+        <p>Participa en desafíos para mejorar tu bienestar emocional.</p>
+        </div>
+      </a>
+
+      <a href="/foro">
+        <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+        <h3>Foro</h3>
+        <p>Comparte tus experiencias y aprende de la comunidad.</p>
         </div>
       </a>
     </div>
@@ -245,7 +261,7 @@ export function showInformacion() {
     </section>
 
     <section class="cita">
-      <a href="citas.html" class="appointment-btn">Agendar una cita</a>
+      <a href="/cita" class="appointment-btn">Agendar una cita</a>
     </section>
   </main>
 
@@ -317,7 +333,7 @@ export function showInformacion() {
 
 };
 
-export function showEmociones() {
+export function showEmotions() {
   const app = document.getElementById('app').innerHTML = `
   <link rel="stylesheet" href="./src/css/style-emociones.css">
   <header>
@@ -407,7 +423,7 @@ export function showEmociones() {
             <textarea id="response" rows="3" ></textarea>
             <menu>
               <p>¿Quieres agendar cita con alguno de nuestros expertos o prefieres desahogarte escribiendo cómo te sientes?</p>
-              <button id="btn-ok">Agendar cita</button>
+              <button id="btn-ok"><a href="/cita">Agendar cita</a></button>
               <button id="btn-cancel">Ir a mi diario</button>
             </menu>
           </form>
@@ -427,7 +443,7 @@ export function showEmociones() {
     <option value="Bien"  >Bien</option>
     <option value="Genial"  >Genial</option>
   </select>
-  <textarea id="note-text" placeholder="Escribe tu nota aquí..."></textarea>
+  <textarea id="note-text" placeholder="Escribe tu nota aquí..." resi ></textarea> 
   <button id="save-note">Guardar Nota</button>
   
   <div id="notes-list"></div>
@@ -437,7 +453,6 @@ export function showEmociones() {
     ©️ 2025 CalmApp | Desarrollado con empatía 💙
   </footer>
   `;
-  document.addEventListener('DOMContentLoaded', () => {
     const dialog = document.getElementById('dialog-emotion');
     const titleEl = document.getElementById('dialog-title');
     const responseEl = document.getElementById('response');
@@ -456,9 +471,7 @@ export function showEmociones() {
         console.log('Respuesta:', responseEl.value);
       }
     });
-  });
   
-  document.addEventListener('DOMContentLoaded', () => {
     const saveButton = document.getElementById('save-note');
     const noteText = document.getElementById('note-text');
     const emotionSelect = document.getElementById('emotion-select');
@@ -510,7 +523,6 @@ export function showEmociones() {
     }
   
     displayNotes();
-  });
   
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -572,6 +584,351 @@ function loadContent(type) {
 
 // Cargar canciones por defecto
 loadContent('songs');
+};
+
+export function showForo() {
+  const app = document.getElementById('app').innerHTML = `
+  <link rel="stylesheet" href="./src/css/style-foro.css">
+  <header>
+    <div class="header-left">
+      <a href="/home" class="home-link"><i class="fas fa-house"></i></a>
+      <span class="header-title">Comunidad</span>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar..." />
+      <i class="fas fa-search"></i>
+    </div>
+  </header>
+
+  <main>
+    <section class="channels">
+      <h2>Explorar canales</h2>
+      <div class="channel-buttons">
+        <button onclick="selectChannel('Ansiedad', this)"><i class="fas fa-heartbeat"></i> Ansiedad</button>
+        <button onclick="selectChannel('Mindfulness', this)"><i class="fas fa-spa"></i> Mindfulness</button>
+        <button onclick="selectChannel('Autoestima', this)"><i class="fas fa-sun"></i> Autoestima</button>
+        <button onclick="selectChannel('Jóvenes', this)"><i class="fas fa-graduation-cap"></i> Jóvenes</button>
+        <button onclick="selectChannel('Superación', this)"><i class="fas fa-dumbbell"></i> Superación</button>
+      </div>
+    </section>
+
+    <section class="featured">
+      <h2><i class="fas fa-star"></i> Destacados hoy</h2>
+      <div class="highlight">
+        <p>"Hoy pude salir de casa. Gracias por el apoyo 🙏"</p>
+        <span>— @usuario123</span>
+        <div class="actions">
+          <i class="fas fa-heart"></i> 56
+          <i class="fas fa-comment"></i> 14
+        </div>
+      </div>
+    </section>
+
+    <section class="feed">
+      <div id="posts-container"></div>
+    </section>
+  </main>
+
+  <button class="fab" onclick="togglePostBox()"><i class="fas fa-plus"></i></button>
+
+  <div id="post-modal" class="post-modal hidden" onclick="closeModal(event)">
+    <div class="modal-content">
+      <textarea id="post-content" placeholder="¿Qué quieres compartir?"></textarea>
+      <select id="channel-select">
+        <option value="" disabled selected>Selecciona un canal</option>
+        <option value="Ansiedad">Ansiedad</option>
+        <option value="Mindfulness">Mindfulness</option>
+        <option value="Autoestima">Autoestima</option>
+        <option value="Jóvenes">Jóvenes</option>
+        <option value="Superación">Superación</option>
+      </select>
+      <button onclick="createPost()">Publicar</button>
+    </div>
+  </div>
+  `;
+  const postsData = {
+  Ansiedad: [],
+  Mindfulness: [],
+  Autoestima: [],
+  Jóvenes: [],
+  Superación: []
+};
+
+let currentChannel = 'Ansiedad';
+
+function selectChannel(channel, button) {
+  currentChannel = channel;
+  renderPosts();
+
+  document.querySelectorAll('.channel-buttons button').forEach(btn =>
+    btn.classList.remove('active')
+  );
+  button.classList.add('active');
+}
+
+function renderPosts() {
+  const container = document.getElementById('posts-container');
+  container.innerHTML = '';
+
+  const posts = postsData[currentChannel];
+
+  if (!posts.length) {
+    container.innerHTML = `<p style="text-align:center;color:gray;">No hay publicaciones en #${currentChannel}</p>`;
+    return;
+  }
+
+  posts.forEach((post, idx) => {
+    const el = document.createElement('div');
+    el.className = 'post';
+    el.innerHTML = `
+      <strong>Anónimo</strong><br/>
+      <p>${sanitize(post.content)}</p>
+      <div class="post-actions">
+        <button onclick="likePost(${idx})">
+          <i class="fas fa-heart"></i> ${post.likes}
+        </button>
+        <button onclick="toggleComments(${idx})">
+          <i class="fas fa-comment"></i> ${post.comments.length}
+        </button>
+      </div>
+      <div class="comments" id="comments-${idx}" style="display:none;">
+        ${post.comments.map(c => `<div class="comment">${sanitize(c)}</div>`).join('')}
+        <input type="text" id="comment-input-${idx}" placeholder="Escribe un comentario..."/>
+        <button onclick="addComment(${idx})">
+          <i class="fas fa-paper-plane"></i> Enviar
+        </button>
+      </div>
+    `;
+    container.appendChild(el);
+  });
+}
+
+function createPost() {
+  const content = document.getElementById('post-content').value.trim();
+  const channel = document.getElementById('channel-select').value;
+
+  if (!content || !channel) {
+    alert('Completa el contenido y selecciona un canal');
+    return;
+  }
+
+  postsData[channel].unshift({
+    content,
+    likes: 0,
+    comments: []
+  });
+
+  document.getElementById('post-content').value = '';
+  document.getElementById('channel-select').value = '';
+  togglePostBox();
+
+  if (channel === currentChannel) {
+    renderPosts();
+  }
+}
+
+function likePost(idx) {
+  postsData[currentChannel][idx].likes++;
+  renderPosts();
+}
+
+function toggleComments(idx) {
+  const comments = document.getElementById(`comments-${idx}`);
+  if (comments) {
+    comments.style.display = comments.style.display === 'none' ? 'block' : 'none';
+  }
+}
+
+function addComment(idx) {
+  const input = document.getElementById(`comment-input-${idx}`);
+  const text = input.value.trim();
+  if (!text) return;
+
+  postsData[currentChannel][idx].comments.push(text);
+  input.value = '';
+  renderPosts();
+  toggleComments(idx); 
+}
+
+function togglePostBox() {
+  const modal = document.getElementById('post-modal');
+  modal.classList.toggle('hidden');
+}
+
+function closeModal(e) {
+  const modal = document.getElementById('post-modal');
+  if (e.target === modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+function sanitize(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+}
+
+export function showDesafios() {
+  const app = document.getElementById('app').innerHTML = `
+  <link rel="stylesheet" href="./src/css/style-desafios.css">
+  <header>
+    <div class="header-left">
+      <a href="/home" class="home-link"><i class="fas fa-house"></i></a>
+      <span class="header-title">Desafíos de bienestar</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="challenges-section">
+      <h2>Desafío semanal</h2>
+
+      <div id="challenges-list" class="challenges-list"></div>
+
+      <div class="progress-container">
+        <span>Progreso: <strong id="progress-text">0 / 5</strong></span>
+        <div class="progress-bar">
+          <div id="progress-bar-fill" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <div id="badge" class="badge hidden">
+        <i class="fas fa-medal"></i> ¡Felicidades! Has desbloqueado una insignia
+      </div>
+
+      <button id="reset-btn" class="reset-btn">Reiniciar desafíos</button>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>`;
+
+  const challenges = [
+  { id: 1, text: "Meditar 5 minutos", completed: false },
+  { id: 2, text: "Escribir en tu diario", completed: false },
+  { id: 3, text: "Dar un paseo corto", completed: false },
+  { id: 4, text: "Practicar respiración consciente", completed: false },
+  { id: 5, text: "Realizar estiramientos", completed: false },
+  ];
+
+  const STORAGE_KEY = 'wellnessChallengesStatus';
+
+  const challengesList = document.getElementById('challenges-list');
+  const progressText = document.getElementById('progress-text');
+  const progressBarFill = document.getElementById('progress-bar-fill');
+  const badge = document.getElementById('badge');
+  const resetBtn = document.getElementById('reset-btn');
+
+  // Cargar el estado guardado al iniciar
+  function loadStatus() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const savedStatus = JSON.parse(saved);
+        challenges.forEach(ch => {
+          if (savedStatus[ch.id] !== undefined) {
+            ch.completed = savedStatus[ch.id];
+          }
+        });
+      } catch (e) {
+        console.error('Error al cargar estado de desafíos:', e);
+      }
+    }
+  }
+
+  // Guardar estado actual
+  function saveStatus() {
+    const statusToSave = {};
+    challenges.forEach(ch => {
+      statusToSave[ch.id] = ch.completed;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(statusToSave));
+  }
+
+  function renderChallenges() {
+    challengesList.innerHTML = '';
+    challenges.forEach((challenge, index) => {
+      const card = document.createElement('div');
+      card.className = 'challenge-card' + (challenge.completed ? ' completed' : '');
+
+      const text = document.createElement('div');
+      text.className = 'challenge-text';
+      text.textContent = challenge.text;
+
+      const action = document.createElement('div');
+      action.className = 'challenge-action';
+      const btn = document.createElement('button');
+      btn.textContent = challenge.completed ? 'Completado' : 'Marcar como completado';
+      btn.disabled = challenge.completed;
+      btn.onclick = () => completeChallenge(challenge.id);
+      action.appendChild(btn);
+
+      card.appendChild(text);
+      card.appendChild(action);
+      challengesList.appendChild(card);
+
+      // Animación de entrada
+      setTimeout(() => {
+        card.style.opacity = 1;
+        card.style.transform = 'translateY(0)';
+      }, index * 80);
+    });
+
+    updateProgress();
+  }
+
+  function completeChallenge(id) {
+    const challenge = challenges.find(c => c.id === id);
+    if (!challenge.completed) {
+      challenge.completed = true;
+      saveStatus();
+      renderChallenges();
+      checkBadge();
+    }
+  }
+
+  function updateProgress() {
+    const completedCount = challenges.filter(c => c.completed).length;
+    progressText.textContent = `${completedCount} / ${challenges.length}`;
+    const percent = (completedCount / challenges.length) * 100;
+    progressBarFill.style.width = percent + '%';
+  }
+
+  function checkBadge() {
+    const allCompleted = challenges.every(c => c.completed);
+    if (allCompleted) {
+      badge.classList.remove('hidden');
+      badge.animate([
+        { transform: 'scale(0.7)', opacity: 0 },
+        { transform: 'scale(1.1)', opacity: 1 },
+        { transform: 'scale(1)', opacity: 1 }
+      ], { duration: 800, easing: 'ease-out' });
+
+      // 🎉 Confeti
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    }
+}
+
+function resetChallenges() {
+  challenges.forEach(c => c.completed = false);
+  localStorage.removeItem(STORAGE_KEY);
+  badge.classList.add('hidden');
+  renderChallenges();
+}
+
+// Iniciar app
+loadStatus();
+renderChallenges();
+checkBadge();
+
+resetBtn.addEventListener('click', resetChallenges);
+
 };
 
 export function showCita() {
@@ -686,257 +1043,6 @@ export function showCita() {
   });
 };
 
-export function showAmigo() {
-  const app = document.getElementById('app').innerHTML = `
-      <div class="main-container">
-        <div class="sidebar">
-            <h2>Menu</h2>
-            <button>Home</button>
-            <button>About us</button>
-            <button>Contact</button>
-            <button>Return</button>
-        </div>
-
-        <div class="chat-container">
-            <div class="chat-header">
-                <button id="toggleDarkMode"></button>
-                <h2>Bot de Apoyo</h2>
-            </div>
-
-            <div class="chat-messages" id="chatMessages"></div>
-
-            <div class="chat-input">
-                <input type="text" id="userInput" placeholder="Escribe cómo te sientes..." />
-                <button id="sendBtn">Enviar</button>
-            </div>
-        </div>
-    </div>
-  `;
-  const sendBtn = document.getElementById("sendBtn");
-  const userInput = document.getElementById("userInput");
-  const chatMessages = document.getElementById("chatMessages");
-
-  window.addEventListener("DOMContentLoaded", () => {
-      mostrarMensajeBot("Hola, estoy aquí para ayudarte. ¿Cómo te sientes hoy?");
-  });
-  sendBtn.addEventListener("click", () => {
-      const mensaje = userInput.value.trim();
-      if (mensaje !== "") {
-          mostrarMensajeUsuario(mensaje);
-          responderComoBot(mensaje.toLowerCase());
-          userInput.value = "";
-      }
-  });
-
-  function mostrarMensajeUsuario(texto) {
-      const div = document.createElement("div");
-      div.className = "message user-message";
-      div.textContent = texto;
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      scrollToBottom();
-  }
-
-  function mostrarMensajeBot(texto) {
-      const div = document.createElement("div");
-      div.className = "message bot-message";
-      div.textContent = texto;
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      scrollToBottom();
-
-      if (texto.toLowerCase().includes("agendar una cita")) {
-          mostrarOpcionesCita();
-      }
-  }
-
-  function mostrarOpcionesCita() {
-      const chatMessages = document.getElementById("chatMessages");
-
-      const contenedorOpciones = document.createElement("div");
-      contenedorOpciones.classList.add("cita-opciones");
-
-      const btnSi = document.createElement("button");
-      btnSi.innerText = "Si";
-      btnSi.classList.add("boton-cita");
-      btnSi.onclick = () => {
-          mostrarMensajeUsuario("Si");
-          mostrarMensajeBot("Perfecto, tu cita ha sido agendada");
-          contenedorOpciones.remove();
-      };
-
-      const btnNo = document.createElement("button");
-      btnNo.innerText = "No";
-      btnNo.classList.add("boton-cita");
-      btnNo.onclick = () => {
-          mostrarMensajeUsuario("No");
-          mostrarMensajeBot("De acuerdo, si cambias de opinión, estaré aquí.");
-          contenedorOpciones.remove()
-      };
-
-      contenedorOpciones.appendChild(btnSi);
-      contenedorOpciones.appendChild(btnNo);
-      chatMessages.appendChild(contenedorOpciones);
-
-      scrollToBottom();
-  }
-
-
-
-  function elegirAleatoria(lista) {
-      return lista[Math.floor(Math.random() * lista.length)];
-  }
-
-  function responderComoBot(texto) {
-
-      texto = texto.toLowerCase();
-
-      const respuestas = {
-          hola: ["¡Hola! Bienvenido a tu espacio seguro. ¿Cómo estás hoy? 🌈",
-          ],
-
-          charla: ["Cuéntame en qué estás pensando. Estoy contigo. 💭",
-          ],
-
-          triste: [`Siento mucho que te sientas así. Recuerda que está bien no estar bien todo el tiempo.
-          ¿Te gustaría escribir en tu diario emocional o escuchar una playlist para reconectar contigo?
-          También te dejo una frase para hoy:
-          Incluso las tormentas más fuertes pasan. Tú también lo harás.
-          
-          ¿Te gustaría agendar una cita con uno de nuestros profesionales?
-          `
-          ],
-
-          feliz: ["¡Qué lindo escucharlo! Atesora esos momentos. 💛"
-          ],
-
-          ansioso: [`Respira conmigo: inhala… 3, 2, 1. Exhala… La ansiedad puede ser abrumadora, pero no estás solo  
-          ¿Te gustaría hacer un ejercicio de respiración guiada o recibir un tip para calmar tu mente? 
-          (Escribeme tu respuesta con si) 
-          si deseas el tip. Espero tu respuesta.`,
-          ],
-
-          tip: [`Sé que en este momento todo puede sentirse abrumador, como si tu mente no pudiera descansar.
-               Quiero que sepas que no estás solo. Respira lento… inhala profundamente por 4 segundos, 
-               mantén el aire por 4, y exhala suavemente por 6. 
-               Cada respiración consciente que haces es una forma de recordarle a tu cuerpo que está a salvo. A veces, no necesitamos tener todas las respuestas, 
-               solo darnos permiso para hacer una pausa. Estás haciendo lo mejor que puedes, y eso ya es suficiente. 💛 `
-          ],
-
-          continuar: ["¿Que mas puedo hacer por ti? ❤",
-          ],
-
-          solo: ["Aunque te sientas solo, yo estoy aquí. Puedes hablarme cuando lo necesites."
-          ],
-
-          enojado: ["La ira es válida. ¿Qué te hizo sentir así? Puedes contármelo. 💢"
-          ],
-
-          miedo: ["El miedo nos protege, pero también nos limita. Háblame de eso. Estoy para apoyarte. 🌌",
-          ],
-
-          culpa: ["La culpa pesa, pero tú mereces perdón y comprensión. ¿Quieres hablar de eso?",
-          ],
-
-          autoestima: ["Eres más fuerte de lo que crees. No te compares. Tú eres único.",
-          ],
-
-          agotado: ["Descansar también es avanzar. Tu cuerpo y mente merecen pausas. 💤",
-          ],
-
-          motivacion: ["Cada paso, aunque pequeño, te acerca a tu meta. No te rindas. 🚀",
-          ],
-
-          default: ["Estoy aquí para ti. Puedes hablarme sin miedo. ¿Qué te gustaría contarme?"
-          ]
-      };
-
-      let respuestaFinal = "";
-
-      // Detección basada en palabras clave
-      if (texto.includes("hola") || texto.includes("buenas") || texto.includes("buenos dias")) {
-          respuestaFinal = elegirAleatoria(respuestas.hola);
-      } else if (
-          texto.includes("pienso") || texto.includes("reflexiono") || texto.includes("quiero") || texto.includes("charla")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.charla);
-      } else if (
-          texto.includes("triste") || texto.includes("llorar") || texto.includes("deprimido")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.triste);
-      }
-      else if (
-          texto.includes("feliz") || texto.includes("contento") || texto.includes("alegre")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.feliz);
-      } else if (
-          texto.includes("ansioso") || texto.includes("nervioso") || texto.includes("estresado")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.ansioso);
-      } else if (
-          texto.includes("si") || texto.includes("sí") || texto.includes("hazlo") || texto.includes("dame un tip")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.tip)
-      } else if (texto.includes("seguir") || texto.includes("continuar")) {
-          respuestaFinal = elegirAleatoria(respuestas.continuar)
-      }
-      else if (
-          texto.includes("solo") || texto.includes("sola") || texto.includes("nadie") || texto.includes("soledad")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.solo);
-      } else if (
-          texto.includes("enojado") || texto.includes("molesto") || texto.includes("furioso") || texto.includes("agresivo")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.enojado);
-      } else if (
-          texto.includes("miedo") || texto.includes("temor") || texto.includes("panico") || texto.includes("asustado")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.miedo);
-      } else if (
-          texto.includes("culpa") || texto.includes("culpable")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.culpa);
-      } else if (
-          texto.includes("valgo") || texto.includes("autoestima") || texto.includes("soy feo")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.autoestima);
-      } else if (
-          texto.includes("cansado") || texto.includes("agotado") || texto.includes("sin energía")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.agotado);
-      } else if (
-          texto.includes("motivado") || texto.includes("lograr") || texto.includes("meta") || texto.includes("progreso")
-      ) {
-          respuestaFinal = elegirAleatoria(respuestas.motivacion);
-      } else {
-          respuestaFinal = elegirAleatoria(respuestas.default);
-      }
-
-      setTimeout(() => {
-          mostrarMensajeBot(respuestaFinal);
-      }, 600);
-  }
-
-    // Activar Enter para enviar el mensaje
-    userInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            sendBtn.click();
-        }
-    });
-
-    function scrollToBottom() {
-        const chatMessages = document.getElementById("chatMessages");
-        chatMessages.scrollTo({
-            top: chatMessages.scrollHeight,
-            behavior: "smooth"
-        });
-    }
-
-    document.getElementById("toggleDarkMode").addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-    });
-    }
 
 export function show404() {
   return `

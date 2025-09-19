@@ -84,19 +84,20 @@ export function showLogin() {
       console.log(err.message);
     };
   };
-
-  document.getElementById('register-form').onsubmit = async e => {
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('register-form').onsubmit = async e => {
     e.preventDefault();
-    const name = document.getElementById('register-name').value;
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
-    try {
-      await auth.register(name, email, password);
-      loadRoute();
-    } catch (err) {
-      alert('El usuario ya está registrado o hubo un error: ' + err.message);
+      const name = document.getElementById('register-name').value;
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+      try {
+        await auth.register(name, email, password);
+        loadRoute();
+      } catch (err) {
+        console.log('El usuario ya está registrado o hubo un error: ' + err.message);
+      };
     };
-  };
+  });
 };
 
 export function showHome() {
@@ -338,7 +339,7 @@ export function showInformacion() {
     </section>
 
     <section class="cita">
-      <a href="/cita" class="appointment-btn">Agendar una cita</a>
+      <a href="/citas" class="appointment-btn">Agendar una cita</a>
     </section>
   </main>
 

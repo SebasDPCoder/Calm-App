@@ -59,6 +59,18 @@
       "name": "Sergio",
       "email": "bsergio274@gmail.com",
       "password": "bon234"
+    },
+    {
+      "id": "8a2e",
+      "name": "Juancho",
+      "email": "juanchito@mail.com",
+      "password": "123456"
+    },
+    {
+      "id": "2e66",
+      "name": "Pedro",
+      "email": "pedro@mail.com",
+      "password": "3456"
     }
   ]
 }

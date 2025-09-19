@@ -1,3 +1,16 @@
-node_modules
+# Node.js
+node_modules/
+.env
 
+# Logs
+npm-debug.log
+yarn-error.log
+*.log
 
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Compilados
+dist/
+build/
